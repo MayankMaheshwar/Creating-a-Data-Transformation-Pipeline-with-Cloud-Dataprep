@@ -1,0 +1,27 @@
+Click on Cloud Dataprep by Trifacta Home icon.
+
+Click Create Flow in the top-right corner.
+
+Rename the Untitled Flow and specify these details:
+
+For Flow Name, type Ecommerce Analytics Pipeline
+For Flow Description, type Revenue reporting table
+
+Click Ok.
+
+If prompted with a What's a flow? popup, select Don't show me any helpers.
+
+Click the Add Icon in the Dataset box.
+
+In the Add Datasets to Flow dialog box, select Import Datasets.
+
+
+In the left pane, click BigQuery.
+
+When your ecommerce dataset is loaded, click on it.
+
+Click on the Create dataset icon (+ sign) on the left of the all_sessions_raw_dataprep table.
+
+Click Import & Add to Flow in the bottom right corner.
+
+The data source automatically updates. You are ready to go to the next task.

@@ -1,0 +1,33 @@
+Enriching the data
+Search your schema documentation for visitId and read the description to determine if it is unique across all user sessions or just the user.
+
+visitId: an identifier for this session. This is part of the value usually stored as the utmb cookie. This is only unique to the user. For a completely unique ID, you should use a combination of fullVisitorId and visitId.
+As we see, visitId is not unique across all users. We will need to create a unique identifier.
+
+Creating a new column for a unique session ID
+As you discovered, the dataset has no single column for a unique visitor session. Create a unique ID for each session by concatenating the fullVisitorID and visitId fields.
+
+
+For Columns, select fullVisitorId and visitId.
+
+For Separator type a single hyphen character: -.
+
+For the New column name, type unique_session_id.
+
+Click Add.
+The unique_session_id is now a combination of the fullVisitorId and visitId. We will explore in a later lab whether each row in this dataset is at the unique session level (one row per user session) or something even more granular.
+
+Creating a case statement for the ecommerce action type
+As you saw earlier, values in the eCommerceAction_type column are integers that map to actual ecommerce actions performed in that session. For example, 3 = "Add to Cart" or 5 = "Check out". This mapping will not be immediately apparent to our end users so let's create a calculated field that brings in the value name.
+
+Click on Conditions in the toolbar, then click Case on single column.
+
+For Column to evaluate, specify eCommerceAction_type.
+
+Next to Cases (1), click Add 8 times for a total of 9 cases.
+
+Adjusting values in the totalTransactionRevenue column
+As mentioned in the schema, the totalTransactionRevenue column contains values passed to Analytics multiplied by 10^6 (e.g., 2.40 would be given as 2400000). You now divide contents of that column by 10^6 to get the original values.
+
+Open the menu to the right of the totalTransactionRevenue column by clicking 93c14cbf1f70a561.png, then select Calculate > Custom formula.
+

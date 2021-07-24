@@ -1,0 +1,25 @@
+Converting the productSKU column data type
+To ensure that the productSKU column type is a string data type, open the menu to the right of the productSKU column by clicking 93c14cbf1f70a561.png, then click Change type > String.
+
+Deleting unused columns
+As we mentioned earlier, we will be deleting the itemQuantity and itemRevenue columns as they only contain NULL values are not useful for the purpose of this lab.
+
+Open the menu for the itemQuantity column, and then click Delete.
+
+Deduplicating rows
+Your team has informed you there may be duplicate session values included in the source dataset. Let's remove these with a new deduplicate step.
+
+Click the Filter rows icon in the toolbar, then click Remove duplicate rows.
+
+
+Filtering out sessions without revenue
+Your team has asked you to create a table of all user sessions that bought at least one item from the website. Filter out user sessions with NULL revenue.
+
+Under the totalTransactionRevenue column, click the grey Missing values bar. All rows with a missing value for totalTransactionRevenue are now highlighted in red.
+In the Suggestions panel, in Delete rows , click Add.
+
+Filtering sessions for PAGE views
+The dataset contains sessions of different types, for example PAGE (for page views) or EVENT (for triggered events like "viewed product categories" or "added to cart"). To avoid double counting session pageviews, add a filter to only include page view related hits.
+
+In the histogram below the type column, click the bar for PAGE. All rows with the type PAGE are now highlighted in green.
+

@@ -1,0 +1,116 @@
+Click on the Recipe icon and then select Edit Recipe.
+
+Cloud Dataprep loads a sample of your dataset into the Transformer view. This process might take a few seconds. You are now ready to start exploring the data!
+
+Answer the following questions:
+
+How many columns are there in the dataset?
+
+Answer: 32 columns.
+
+How many rows does the sample contain?
+
+
+Answer: About 12 thousand rows.
+
+What is the most common value in the channelGrouping column?
+Hint: Find out by hovering your mouse cursor over the histogram under the channelGrouping column title.
+
+
+Answer: Referral. A referring site is typically any other website that has a link to your content. An example here is a different website reviewed a product on our ecommerce website and linked to it. This is considered a different acquisition channel than if the visitor came from a search engine.
+
+Tip: When looking for a specific column, click the Find column icon (33a3808286737935.png) in the top right corner, then start typing the column's name in the Find column textfield, then click on the column's name. This will automatically scroll the grid to bring the column on the screen.
+What are the top three countries from which sessions are originated?
+
+
+Answer: United States, India, United Kingdom
+
+What does the grey bar under totalTransactionRevenue represent?
+
+
+Answer: Missing values for the totalTransactionRevenue field. This means that a lot of sessions in this sample did not generate revenue. Later, we will filter out these values so our final table only has customer transactions and associated revenue.
+
+What is the maximum timeOnSite in seconds, maximum pageviews, and maximum sessionQualityDim for the data sample? (Hint: Open the menu to the right of the timeOnSite column by clicking 93c14cbf1f70a561.pngthe Column Details menu)
+e5d3d6810ccffe1f.png
+
+37ce662aab85f02b.png
+
+To close the details window, click the Close Column Details (X) button in the top right corner. Then repeat the process to view details for the pageviews and sessionQualityDim columns.
+
+
+Answers:
+
+Maximum Time On Site: 5,561 seconds (or 92 minutes)
+Maximum Pageviews: 155 pages
+Maximum Session Quality Dimension: 97
+Note: Your answers for maximums may vary slightly due to the data sample used by Cloud Dataprep
+Note on averages: Use extra caution when performing aggregations like averages over a column of data. We need to first ensure fields like timeOnSite are only counted once per session. We'll explore the uniqueness of visitor and session data in a later lab.
+Looking at the histogram for sessionQualityDim, are the data values evenly distributed?
+
+
+Answer: No, they are skewed to lower values (low quality sessions), which is expected.
+
+What is the date range for the dataset? Hint: Look at date field
+Answer: 8/1/2017 (one day of data)
+
+You might see a red bar under the productSKU column. If so, what might that mean?
+
+
+Answer: A red bar indicates mismatched values. While sampling data, Cloud Dataprep attempts to automatically identify the type of each column. If you do not see a red bar for the productSKU column, then this means that Cloud Dataprep correctly identified the type for the column (i.e. the String type). If you do see a red bar, then this means that Cloud Dataprep found enough number values in its sampling to determine (incorrectly) that the type should be Integer. Cloud Dataprep also detected some non-integer values and therefore flagged those values as mismatched. In fact, the productSKU is not always an integer (for example, a correct value might be "GGOEGOCD078399"). So in this case, Cloud Dataprep incorrectly identified the column type: it should be a string, not an integer. You will fix that later in this lab.
+
+Looking at the v2ProductName column, what are the most popular products?
+
+
+Answer: Nest products
+
+Looking at the v2ProductCategory column, what are some of the most popular product categories?
+
+
+Answers:
+
+The most popular product categories are:
+
+Nest
+
+Bags
+
+(not set) (which means that some sessions are not associated with a category)
+
+True or False? The most common productVariant is COLOR.
+
+Answer: False. It's (not set) because most products do not have variants (80%+)
+
+What are the two values in the type column?
+Answer: PAGE and EVENT
+
+A user can have many different interaction types when browsing your website. Types include recording session data when viewing a PAGE or a special EVENT (like "clicking on a product") and other types. Multiple hit types can be triggered at the exact same time so you will often filter on type to avoid double counting. We'll explore this more in a later analytics lab.
+
+What is the maximum productQuantity?
+Answer: 100 (your answer may vary)
+
+productQuantity indicates how many units of that product were added to cart. 100 means 100 units of a single product was added.
+
+What is the dominant currencyCode for transactions?
+Answer: USD (United States Dollar)
+
+Are there valid values for itemQuantity or itemRevenue?
+Answer: No, they are all NULL (or missing) values.
+
+Note: After exploration, in some datasets you may find duplicative or deprecated columns. We will be using productQuantity and productRevenue fields instead and dropping the itemQuantity and itemRevenue fields later in this lab to prevent confusion for our report users.
+
+What percentage of transactionId values are valid? What does this represent for our ecommerce dataset?
+
+
+Answer: About 4.6% of transaction IDs have a valid value, which represents the average conversion rate of the website (4.6% of visitors transact).
+How many eCommerceAction_type values are there, and what is the most common value?
+Hint: Count the distinct number of histogram columns.
+
+
+Answers: There are seven values found in our sample. The most common value is zero 0 which indicates that the type is unknown. This makes sense as the majority of the web sessions on our website will not perform any ecommerce actions as they are just browsing.
+
+Using the schema, what does eCommerceAction_type = 6 represent?
+Hint: Search for eCommerceAction type and read the description for the mapping
+Answer: 6 maps to "Completed purchase". Later in this lab we will ingest this mapping as part of our data pipeline.
+
+b88fc201e7f4ed2b.png
+
